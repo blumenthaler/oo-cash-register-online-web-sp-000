@@ -1,4 +1,5 @@
 class CashRegister
+<<<<<<< HEAD
   attr_accessor :discount, :purchases, :total, :transaction
 
   def initialize(discount=nil)
@@ -37,3 +38,42 @@ class CashRegister
     end
   end
 end
+=======
+  attr_accessor :total, :discount
+  
+  def initialize(discount = 0)
+    @total = 0
+    @discount = discount
+    @cart = []
+  end
+  
+  def add_item(title, price, quantity = 1)
+    item_info = {}
+    item_info[:title] = title
+    item_info[:price] = price
+    item_info[:quantity] = quantity
+    @cart << item_info
+    @total += price * quantity
+  end
+  
+  def apply_discount
+    if @discount = 0
+      return "There is no discount to apply."
+    else
+      discount_percent = @discount / 100
+      discount_total = @total * discount_percent
+      new_total = @total - discount_total
+      return "After the discount, the total comes to $#{new_total}."
+    end
+  end
+  
+  def items
+    item_cart = []
+    @cart.select do |items|
+      item_cart << items[:title]
+    end
+    item_cart
+  end
+  
+end
+>>>>>>> c10470a5f31ac7918ad7f500f6e18268db72f363
